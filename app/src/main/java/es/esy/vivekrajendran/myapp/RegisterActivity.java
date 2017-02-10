@@ -5,7 +5,6 @@
 package es.esy.vivekrajendran.myapp;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
@@ -21,7 +20,7 @@ import android.widget.Toast;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import es.esy.vivekrajendran.myapp.model.Contract;
+import es.esy.vivekrajendran.myapp.db.MyPreferences;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -64,12 +63,9 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (verifyName() && verifyEmail() && verifyPassword()) {
-                    SharedPreferences mSharedPreferences = getSharedPreferences(Contract.Pref.PREF_NAME, MODE_PRIVATE);
-                    SharedPreferences.Editor editor = mSharedPreferences.edit();
-                    editor.putString(Contract.Pref.EMAIL, email.getText().toString().trim());
-                    editor.putString(Contract.Pref.NAME, name.getText().toString().trim());
-                    editor.putString(Contract.Pref.PASSWORD, password.getText().toString().trim());
-                    editor.apply();
+                    MyPreferences userRegister = MyPreferences.init(getApplicationContext());
+                    userRegister.
+                            regUser(name.getText().toString(), email.getText().toString(), password.getText().toString());
                     Toast.makeText(RegisterActivity.this, getResources().getString(R.string.signup_success), Toast.LENGTH_SHORT)
                                 .show();
                     onBackPressed();
@@ -79,8 +75,6 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         });
-
-
     }
 
     private boolean verifyEmail() {
@@ -125,3 +119,4 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 }
+
