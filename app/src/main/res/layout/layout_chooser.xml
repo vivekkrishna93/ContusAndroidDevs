@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Phone Ringtone"
+        android:gravity="center_vertical"
+        android:textSize="25sp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        android:textColor="@android:color/background_dark" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dedada"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        android:layout_weight="5">
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingEnd="10dp"
+            android:gravity="center_horizontal">
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/chooser_text"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="30dip"
+                android:text="None"/>
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/chooser_text"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="30dip"
+                android:text="Calisto"/>
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/chooser_text"
+                android:paddingLeft="30dip"
+                android:layout_marginTop="20dp"
+                android:text="Ganymede"/>
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/chooser_text"
+                android:paddingLeft="30dip"
+                android:shadowColor="@android:color/holo_red_dark"
+                android:layout_marginTop="20dp"
+                android:text="Luna"/>
+
+        </RadioGroup>
+
+    </ScrollView>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dedada"/>
+    <android.support.v7.widget.ButtonBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="end|center_vertical">
+        <Button
+            android:id="@+id/btn_chooser_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CANCEL"
+            android:textColor="@android:color/holo_red_light"
+            android:background="@android:color/transparent" />
+        <Button
+            android:id="@+id/btn_chooser_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OK"
+            android:textColor="@android:color/holo_red_light"
+            android:background="@android:color/transparent"/>
+    </android.support.v7.widget.ButtonBarLayout>
+</LinearLayout>

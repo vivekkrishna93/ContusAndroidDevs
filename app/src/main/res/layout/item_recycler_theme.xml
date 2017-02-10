@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ImageButton
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_theme_imageButton"
+    android:layout_height="56dp"
+    android:layout_width="56dp"
+    android:src="@drawable/circle"
+    android:layout_margin="4dp"
+    android:background="@android:color/white"
+    android:contentDescription="@string/theme_chooser_image_description">
+
+</ImageButton>

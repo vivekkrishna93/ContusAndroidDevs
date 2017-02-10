@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialog_frame"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@android:color/transparent"
+        app:cardCornerRadius="5dp"
+        app:cardBackgroundColor="@android:color/transparent"
+        style="@android:style/Theme.Holo.NoActionBar">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorDiaglogBox">
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="4">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_marginTop="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:src="@drawable/google_play_music"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textSize="@dimen/heading"
+                        android:text="@string/status"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/white"
+                        android:gravity="center"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="@dimen/activity_horizontal_margin"
+                        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                        android:textSize="@dimen/body"
+                        android:textAlignment="center"
+                        android:layout_marginBottom="16dp"
+                        android:textColor="@color/colorDialog_text_secondary"
+                        android:text="@string/status_more"/>
+                </LinearLayout>
+            </ScrollView>
+            <android.support.v7.widget.ButtonBarLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="0dp"
+                android:minHeight="56dp"
+                android:background="@color/colorDialogBox_primary">
+                <Button
+                    android:id="@+id/btn_dialog_customize"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:text="@string/customize"
+                    android:background="@color/colorDialogBox_primary"
+                    android:textColor="@color/colorDialog_text_secondary"
+                    style="@style/style_dialogBox" />
+                <Button
+                    android:id="@+id/btn_dialog_ok"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/ok"
+                    android:background="@color/colorDialogBox_primary"
+                    android:typeface="sans"
+                    style="@style/style_dialogBox" />
+            </android.support.v7.widget.ButtonBarLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</FrameLayout>

@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">MyApp</string>
+    <string name="register">registre</string>
+    <string name="login">S\'identifier</string>
+    <string name="forget_password">mot de passe oublié?</string>
+    <string name="login_required">"Se connecter pour continuer "</string>
+    <string name="splash_des">Company logo</string>
+    <string name="success">Login Succès</string>
+    <string name="err_email">Email invalide</string>
+    <string name="err_password">Mot de passe incorrect</string>
+    <string name="err_login">Échec de la connexion</string>
+    <string name="password">Mot de passe</string>
+    <string name="email">Adresse e-mail</string>
+</resources>

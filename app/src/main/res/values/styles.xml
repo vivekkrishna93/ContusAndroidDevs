@@ -1,0 +1,62 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="NoActionBar" parent="Theme.AppCompat.Light">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    <!--<style name="AppThemeModified" parent="android:Theme.Material">
+        <item name="android:colorPrimary">@color/colorPrimary</item>
+        <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:colorAccent">@color/colorAccent</item>
+    </style>-->
+    <style name="style_dialogBox" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@color/colorDiaglogBox</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:textSize">@dimen/button</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!--Red Cyan Theme-->
+    <!--<style name="AppTheme_Red_cyan" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">#F44336</item>
+        <item name="colorPrimaryDark">#D32F2F</item>
+        <item name="primary_light">#FFCDD2</item>
+        <item name="accent">#00BCD4</item>
+        <item name="primary_text">#212121</item>
+        <item name="secondary_text">#757575</item>
+        <item name="icons">#FFFFFF</item>
+        <item name="divider">@color/divider_red_cyan</item>
+    </style>
+
+    &lt;!&ndash;Deep Orange Light Green Theme&ndash;&gt;
+    <style name="AppTheme_deep_orange_light_green" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="primary">#FF5722</item>
+        <item name="primary_dark">#E64A19</item>
+        <item name="primary_light">#FFCCBC</item>
+        <item name="accent">#8BC34A</item>
+        <item name="primary_text">#212121</item>
+        <item name="secondary_text">#757575</item>
+        <item name="icons">#FFFFFF</item>
+        <item name="divider">@color/divider_deep_orage_light_green</item>
+    </style>-->
+
+
+</resources>

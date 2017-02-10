@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="contus_blue">#1096D4</color>
+    <color name="colorBackground">#1024</color>
+    <color name="colorDiaglogBox">#e6311a</color>
+    <color name="colorDialogBox_primary">#ca2f20</color>
+    <color name="colorDialog_text_primary">#f6c1b1</color>
+    <color name="colorDialog_text_secondary">#fe8375</color>
+    
+    <color name="divider_red_cyan">#BDBDBD</color>
+    <color name="divider_deep_orage_light_green">#BDBDBD</color>
+
+
+    <!--List of colors-->
+    <color name="yellow">#FFFF00</color>
+    <color name="fuchsia">#FF00FF</color>
+    <color name="red">#FF0000</color>
+    <color name="silver">#C0C0C0</color>
+    <color name="gray">#808080</color>
+    <color name="olive">#808000</color>
+    <color name="purple">#800080</color>
+    <color name="maroon">#800000</color>
+    <color name="aqua">#00FFFF</color>
+    <color name="lime">#00FF00</color>
+    <color name="teal">#008080</color>
+    <color name="green">#008000</color>
+    <color name="blue">#0000FF</color>
+    <color name="navy">#000080</color>
+    <color name="black">#000000</color>
+
+
+    <color name="a">#31b8e6</color>
+    <color name="b">#fcbe31</color>
+    <color name="c">#ff4748</color>
+    <color name="d">#99ca0b</color>
+    <color name="e">#4ab757</color>
+
+    <!--Profile-->
+    <color name="prof_red">#d6574d</color>
+
+</resources>
