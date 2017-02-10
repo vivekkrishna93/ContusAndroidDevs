@@ -108,9 +108,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean checkUser(String email, String password) {
-        SharedPreferences mSharedPrefrences = getSharedPreferences("login", Context.MODE_PRIVATE);
-        String email_cross = mSharedPrefrences.getString("email", "default");
-        String pass_cross = mSharedPrefrences.getString("password", "pass");
+        SharedPreferences mSharedPrefrences = getSharedPreferences(Contract.Pref.PREF_NAME, Context.MODE_PRIVATE);
+        String email_cross = mSharedPrefrences.getString(Contract.Pref.EMAIL, "default");
+        String pass_cross = mSharedPrefrences.getString(Contract.Pref.PASSWORD, "pass");
         if (email_cross.equals(email) && pass_cross.equals(password)) {
             return true;
         } else return false;
