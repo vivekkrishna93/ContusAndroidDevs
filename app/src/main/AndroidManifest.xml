@@ -32,7 +32,8 @@
         <activity
             android:parentActivityName=".Home"
             android:name=".GridActivity"
-            android:label="@string/title_activity_grid"/>
+            android:label="@string/title_activity_grid"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
         <provider
             android:name=".data.WeatherProvider"

@@ -19,14 +19,18 @@ public class WeatherContract {
     private WeatherContract() {}
 
     public static final String CONTENT_AUTHORITY = "es.esy.vivekrajendran.myapp";
+
     public static final String CONTENT_USERS = "users";
     public static final String CONTENT_USERS_ID = "users/#";
+
     public static final String CONTENT_WEATHER = "weather";
-    public static final String CONTENT_WEATHER_ID = "weather/#";
+    public static final String CONTENT_WEATHER_ID = "weather/*";
 
     public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
+
     public static final Uri WEATHER_URI = Uri.withAppendedPath(BASE_CONTENT_URI, CONTENT_WEATHER);
     public static final Uri WEATHER_ID_URI = Uri.withAppendedPath(BASE_CONTENT_URI, CONTENT_WEATHER_ID);
+
     public static final Uri USER_URI = Uri.withAppendedPath(BASE_CONTENT_URI, CONTENT_USERS);
     public static final Uri USER_ID_URI = Uri.withAppendedPath(BASE_CONTENT_URI, CONTENT_USERS_ID);
 

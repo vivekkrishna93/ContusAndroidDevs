@@ -20,7 +20,7 @@ public class WeatherProvider extends ContentProvider {
 
     private static UriMatcher mUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
     private static final int WEATHER_CODE = 101;
-    public static final int WEATHER_ID_CODE = 102;
+    private static final int WEATHER_ID_CODE = 102;
     private static final int USER_CODE = 103;
     private static final int USER_ID_CODE = 104;
 
@@ -97,6 +97,7 @@ public class WeatherProvider extends ContentProvider {
     @Override
     public Uri insert(@NonNull Uri uri, ContentValues values) {
         SQLiteDatabase mWritableDatabase = mWeatherDbHelper.getWritableDatabase();
+
         if (mUriMatcher.match(uri) == WEATHER_CODE) {
             mWritableDatabase.insert(
                     WeatherContract.LocationEntry.TABLE_NAME,
@@ -116,7 +117,14 @@ public class WeatherProvider extends ContentProvider {
     @Override
     public int delete(@NonNull Uri uri, String selection, String[] selectionArgs) {
         SQLiteDatabase mWritableDatabase = mWeatherDbHelper.getWritableDatabase();
+
         if (mUriMatcher.match(uri) == WEATHER_CODE) {
+            return mWritableDatabase.delete(
+                    WeatherContract.LocationEntry.TABLE_NAME,
+                    selection + "=?",
+                    selectionArgs);
+
+        } else if (mUriMatcher.match(uri) == WEATHER_ID_CODE) {
             return mWritableDatabase.delete(
                     WeatherContract.LocationEntry.TABLE_NAME,
                     selection + "=?",
@@ -134,7 +142,15 @@ public class WeatherProvider extends ContentProvider {
     @Override
     public int update(@NonNull Uri uri, ContentValues values, String selection, String[] selectionArgs) {
         SQLiteDatabase mWritableDatabase = mWeatherDbHelper.getWritableDatabase();
+
         if (mUriMatcher.match(uri) == WEATHER_CODE) {
+            return mWritableDatabase.update(
+                    WeatherContract.LocationEntry.TABLE_NAME,
+                    values,
+                    selection + "=?",
+                    selectionArgs);
+
+        } else if (mUriMatcher.match(uri) == WEATHER_ID_CODE) {
             return mWritableDatabase.update(
                     WeatherContract.LocationEntry.TABLE_NAME,
                     values,

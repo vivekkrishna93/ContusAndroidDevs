@@ -4,6 +4,8 @@
         android:title="Add"/>
     <item android:title="Show"
         android:id="@+id/menu_grid_show"/>
+    <item android:title="Update"
+        android:id="@+id/menu_grid_update"/>
     <item android:id="@+id/menu_grid_delete"
         android:title="Delete"/>
     <item android:id="@+id/menu_grid_deleteAll"
