@@ -24,7 +24,7 @@
             android:theme="@style/NoActionBar"/>
 
         <provider
-            android:name=".db.WeatherProvider"
+            android:name=".data.WeatherProvider"
             android:authorities="es.esy.vivekrajendran.myapp"
             android:exported="false" />
 

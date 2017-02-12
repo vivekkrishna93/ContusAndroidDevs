@@ -5,12 +5,11 @@
 package es.esy.vivekrajendran.myapp;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import es.esy.vivekrajendran.myapp.model.Contract;
+import es.esy.vivekrajendran.myapp.data.MyPreferences;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -23,10 +22,8 @@ public class SplashActivity extends AppCompatActivity {
             getSupportActionBar().hide();
         }
 
-        SharedPreferences mSharedPreferences = getSharedPreferences(Contract.Pref.PREF_NAME, MODE_PRIVATE);
         final Intent intent;
-        // = new Intent(SplashActivity.this, LoginActivity.class);
-        boolean islogged = mSharedPreferences.getBoolean(Contract.Pref.ISLOGGED, false);
+        boolean islogged = MyPreferences.init(getApplicationContext()).isLogged();
         if (!islogged) {
             intent = new Intent(SplashActivity.this, LoginActivity.class);
         } else {

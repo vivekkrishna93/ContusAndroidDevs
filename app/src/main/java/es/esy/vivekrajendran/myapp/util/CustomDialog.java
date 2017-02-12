@@ -4,28 +4,19 @@
 
 package es.esy.vivekrajendran.myapp.util;
 
-import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import es.esy.vivekrajendran.myapp.R;
-
-/**
- * This class gives helps to create custom Diaglog box.
- */
 
 public class CustomDialog extends DialogFragment {
 

@@ -9,14 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.Button;
-import android.widget.Toast;
 
 import es.esy.vivekrajendran.myapp.R;
-
-/**
- * Created by user on 9/2/17.
- */
 
 public class Dev extends DialogFragment {
 

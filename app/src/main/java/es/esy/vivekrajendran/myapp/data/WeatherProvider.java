@@ -2,7 +2,7 @@
  * Copyright will updated soon
  */
 
-package es.esy.vivekrajendran.myapp.db;
+package es.esy.vivekrajendran.myapp.data;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;

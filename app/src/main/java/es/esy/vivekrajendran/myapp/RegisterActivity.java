@@ -20,7 +20,7 @@ import android.widget.Toast;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import es.esy.vivekrajendran.myapp.db.MyPreferences;
+import es.esy.vivekrajendran.myapp.data.MyPreferences;
 
 public class RegisterActivity extends AppCompatActivity {
 

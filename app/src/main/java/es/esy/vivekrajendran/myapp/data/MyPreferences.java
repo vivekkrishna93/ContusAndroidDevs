@@ -1,11 +1,10 @@
-package es.esy.vivekrajendran.myapp.db;
+package es.esy.vivekrajendran.myapp.data;
 
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
 import es.esy.vivekrajendran.myapp.model.Contract;
-
 import static android.content.Context.MODE_PRIVATE;
 
 public class MyPreferences {
@@ -35,7 +34,7 @@ public class MyPreferences {
         String pass_cross = mSharedPreferences.getString(Contract.Pref.PASSWORD, "pass");
         SharedPreferences.Editor editor = mSharedPreferences.edit();
 
-        if (email_cross.equals(email.trim()) && pass_cross.equals(password.trim())) {
+        if (email_cross.compareToIgnoreCase(email.trim()) == 0 && pass_cross.equals(password.trim())) {
             editor.putBoolean(Contract.Pref.ISLOGGED, true);
             editor.apply();
             return true;
