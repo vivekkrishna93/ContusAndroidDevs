@@ -14,17 +14,17 @@ import android.database.sqlite.SQLiteOpenHelper;
  * This class creates SQLite database with help of WeatherContract.java file.
  */
 
-public class Weather extends SQLiteOpenHelper {
+public class WeatherDbHelper extends SQLiteOpenHelper {
 
     private static final int VERSION = 1;
-    private static final String DB_NAME = "Weather.db";
+    private static final String DB_NAME = "WeatherDB.db";
 
 
     /**
      *
      * @param context Application context is passed for reference.
      */
-    public Weather(Context context) {
+    public WeatherDbHelper(Context context) {
         super(context, DB_NAME, null, VERSION);
     }
 

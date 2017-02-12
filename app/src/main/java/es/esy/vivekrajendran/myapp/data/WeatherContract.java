@@ -22,14 +22,16 @@ public class WeatherContract {
     public static final String CONTENT_USERS = "users";
     public static final String CONTENT_USERS_ID = "users/#";
     public static final String CONTENT_WEATHER = "weather";
+    public static final String CONTENT_WEATHER_ID = "weather/#";
 
     public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
-    public static final Uri USER_URI = Uri.withAppendedPath(BASE_CONTENT_URI, CONTENT_USERS);
     public static final Uri WEATHER_URI = Uri.withAppendedPath(BASE_CONTENT_URI, CONTENT_WEATHER);
+    public static final Uri WEATHER_ID_URI = Uri.withAppendedPath(BASE_CONTENT_URI, CONTENT_WEATHER_ID);
+    public static final Uri USER_URI = Uri.withAppendedPath(BASE_CONTENT_URI, CONTENT_USERS);
     public static final Uri USER_ID_URI = Uri.withAppendedPath(BASE_CONTENT_URI, CONTENT_USERS_ID);
 
     public static final class LocationEntry implements BaseColumns, OpenableColumns {
-        public static final String TABLE_NAME = "Location Entry";
+        public static final String TABLE_NAME = "LocationEntry";
         public static final String COLUMN_CITY = "City";
         public static final String COLUMN_COORD_LAT = "Coord_lat";
         public static final String COLUMN_COORD_LONG = "Coord_long";

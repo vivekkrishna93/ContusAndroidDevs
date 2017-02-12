@@ -4,7 +4,6 @@
 
 package es.esy.vivekrajendran.myapp;
 
-import android.content.ContentProvider;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v4.app.FragmentTransaction;

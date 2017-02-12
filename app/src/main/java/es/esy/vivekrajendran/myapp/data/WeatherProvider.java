@@ -16,15 +16,17 @@ import android.support.annotation.Nullable;
 
 public class WeatherProvider extends ContentProvider {
 
-    private Weather mWeather;
+    private WeatherDbHelper mWeatherDbHelper;
 
     private static UriMatcher mUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
     private static final int WEATHER_CODE = 101;
-    private static final int USER_CODE = 102;
-    private static final int USER_ID_CODE = 103;
+    public static final int WEATHER_ID_CODE = 102;
+    private static final int USER_CODE = 103;
+    private static final int USER_ID_CODE = 104;
 
     static {
         mUriMatcher.addURI(WeatherContract.CONTENT_AUTHORITY, WeatherContract.CONTENT_WEATHER, WEATHER_CODE);
+        mUriMatcher.addURI(WeatherContract.CONTENT_AUTHORITY, WeatherContract.CONTENT_WEATHER_ID, WEATHER_ID_CODE);
         mUriMatcher.addURI(WeatherContract.CONTENT_AUTHORITY,WeatherContract.CONTENT_USERS, USER_CODE);
         mUriMatcher.addURI(WeatherContract.CONTENT_AUTHORITY, WeatherContract.CONTENT_USERS_ID, USER_ID_CODE);
     }
@@ -34,61 +36,58 @@ public class WeatherProvider extends ContentProvider {
 
     @Override
     public boolean onCreate() {
-        mWeather = new Weather(getContext());
+        mWeatherDbHelper = new WeatherDbHelper(getContext());
         return true;
     }
 
     @Nullable
     @Override
     public Cursor query(@NonNull Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-
-        SQLiteDatabase mSQLiteDatabase = mWeather.getReadableDatabase();
+        SQLiteDatabase mSQLiteDatabase = mWeatherDbHelper.getReadableDatabase();
 
         if (mUriMatcher.match(WeatherContract.WEATHER_URI) == WEATHER_CODE ) {
-            String[] projection_weather = new String[] {
-                    WeatherContract.LocationEntry.COLUMN_CITY,
-                    WeatherContract.LocationEntry.COLUMN_COORD_LAT,
-                    WeatherContract.LocationEntry.COLUMN_COORD_LONG};
             return mSQLiteDatabase.query(
-                        WeatherContract.LocationEntry.TABLE_NAME,
-                        projection_weather,
-                        selection,
-                        selectionArgs,
-                        sortOrder,
-                        null,
-                        null,
-                        null);
-
-        } else if (mUriMatcher.match(WeatherContract.USER_ID_URI) == USER_ID_CODE) {
-            String[] projection_users_id = new String[] {
-                    WeatherContract.Users.COLUMN_NAME,
-                    WeatherContract.Users.COLUMN_EMAIL,
-                    WeatherContract.Users.COLUMN_PASSWORD };
-            String selection_id = WeatherContract.Users.COLUMN_EMAIL + "=?";
-            String selectionArgs_id[] = new String[] {String.valueOf(ContentUris.parseId(uri ))};
-            return mSQLiteDatabase.query(
-                    WeatherContract.Users.TABLE_NAME,
-                    projection_users_id,
-                    selection_id,
-                    selectionArgs_id,
+                    WeatherContract.LocationEntry.TABLE_NAME,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
                     sortOrder,
+                    null);
+
+        } else if (mUriMatcher.match(WeatherContract.WEATHER_ID_URI) == WEATHER_ID_CODE) {
+            return mSQLiteDatabase.query(
+                    WeatherContract.LocationEntry.TABLE_NAME,
+                    null,
+                    selection + "=?",
+                    selectionArgs,
+                    null,
                     null,
                     null,
                     null);
 
-        } else if (mUriMatcher.match(WeatherContract.USER_URI) == USER_CODE) {
-            String[] projection_users = {
-                    WeatherContract.Users.COLUMN_NAME,
-                    WeatherContract.Users.COLUMN_EMAIL,
-                    WeatherContract.Users.COLUMN_PASSWORD};
+        }  else if (mUriMatcher.match(WeatherContract.USER_URI) == USER_CODE) {
             return mSQLiteDatabase.query(
                     WeatherContract.Users.TABLE_NAME,
-                    projection_users,
-                    selection,
-                    selectionArgs,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
                     sortOrder,
+                    null);
+
+        }  else if (mUriMatcher.match(WeatherContract.USER_ID_URI) == USER_ID_CODE) {
+            String selectionArgs_id[] = new String[] {String.valueOf(ContentUris.parseId(uri ))};
+            return mSQLiteDatabase.query(
+                    WeatherContract.Users.TABLE_NAME,
+                    null,
+                    WeatherContract.Users.COLUMN_EMAIL + "=?",
+                    selectionArgs_id,
                     null,
                     null,
+                    sortOrder,
                     null);
 
         } else throw new IllegalArgumentException("query: Uri match not found. " + uri);
@@ -96,14 +95,8 @@ public class WeatherProvider extends ContentProvider {
 
     @Nullable
     @Override
-    public String getType(Uri uri) {
-        return null;
-    }
-
-    @Nullable
-    @Override
-    public Uri insert(Uri uri, ContentValues values) {
-        SQLiteDatabase mWritableDatabase = mWeather.getWritableDatabase();
+    public Uri insert(@NonNull Uri uri, ContentValues values) {
+        SQLiteDatabase mWritableDatabase = mWeatherDbHelper.getWritableDatabase();
         if (mUriMatcher.match(uri) == WEATHER_CODE) {
             mWritableDatabase.insert(
                     WeatherContract.LocationEntry.TABLE_NAME,
@@ -112,7 +105,7 @@ public class WeatherProvider extends ContentProvider {
 
         } else if (mUriMatcher.match(uri) == USER_CODE) {
             mWritableDatabase.insert(
-                    WeatherContract.LocationEntry.TABLE_NAME,
+                    WeatherContract.Users.TABLE_NAME,
                     null,
                     values);
 
@@ -121,12 +114,46 @@ public class WeatherProvider extends ContentProvider {
     }
 
     @Override
-    public int delete(Uri uri, String selection, String[] selectionArgs) {
-        return 0;
+    public int delete(@NonNull Uri uri, String selection, String[] selectionArgs) {
+        SQLiteDatabase mWritableDatabase = mWeatherDbHelper.getWritableDatabase();
+        if (mUriMatcher.match(uri) == WEATHER_CODE) {
+            return mWritableDatabase.delete(
+                    WeatherContract.LocationEntry.TABLE_NAME,
+                    selection + "=?",
+                    selectionArgs);
+
+        } else if (mUriMatcher.match(uri) == USER_CODE) {
+            return mWritableDatabase.delete(
+                    WeatherContract.Users.TABLE_NAME,
+                    selection + "=?",
+                    selectionArgs);
+
+        } else throw new IllegalArgumentException("insert: Uri match not found. " + uri);
     }
 
     @Override
-    public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
-        return 0;
+    public int update(@NonNull Uri uri, ContentValues values, String selection, String[] selectionArgs) {
+        SQLiteDatabase mWritableDatabase = mWeatherDbHelper.getWritableDatabase();
+        if (mUriMatcher.match(uri) == WEATHER_CODE) {
+            return mWritableDatabase.update(
+                    WeatherContract.LocationEntry.TABLE_NAME,
+                    values,
+                    selection + "=?",
+                    selectionArgs);
+
+        } else if (mUriMatcher.match(uri) == USER_CODE) {
+            return mWritableDatabase.update(
+                    WeatherContract.Users.TABLE_NAME,
+                    values,
+                    selection + "=?",
+                    selectionArgs);
+
+        } else throw new IllegalArgumentException("insert: Uri match not found. " + uri);
+    }
+
+    @Nullable
+    @Override
+    public String getType(@NonNull Uri uri) {
+        return "text/plain";
     }
 }
